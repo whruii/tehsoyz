@@ -1,0 +1,34 @@
+/* css/style.css - Сборка стилей (исправленная) */
+
+/* Базовые настройки */
+@import 'base/variables.css';
+@import 'base/reset.css';
+
+/* Компоненты */
+@import 'components/footer.css';
+@import 'components/buttons.css';
+
+/* ФИНАЛЬНАЯ ШАПКА */
+@import 'header-final.css';
+
+/* Главная страница */
+@import 'home/hero.css';
+@import 'home/slider.css';
+@import 'home/features.css';
+@import 'home/cards.css';
+
+/* Остальные страницы */
+@import 'pages/printing.css';   /* <--- ДОБАВИЛИ ИМПОРТ СТРАНИЦЫ ПЕЧАТИ */
+@import 'pages/contacts.css';
+@import 'pages/about.css';
+@import 'pages/order.css';
+
+/* Общий контейнер */
+.container {
+  max-width: var(--container-width);
+  margin: 0 auto;
+  padding: 0 20px;
+}
+body {
+  background: #ffffff !important;
+}

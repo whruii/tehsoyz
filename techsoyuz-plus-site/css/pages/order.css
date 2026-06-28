@@ -1,0 +1,154 @@
+/* css/pages/order.css */
+
+/* ===== ФОН СЗАДИ ФОРМЫ ===== */
+.order-section {
+  padding: 60px 0 80px;
+  background-image: url('../images/bg-bottom.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 100%;
+}
+
+/* ===== БЕЛЫЙ БЛОК (САМА ФОРМА) ===== */
+.order-wrapper {
+  background: #ffffff;
+  max-width: 850px;
+  margin: 0 auto;
+  padding: 40px;
+  border-radius: 24px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+}
+
+/* ===== ОБЩИЕ СТИЛИ ДЛЯ ВСЕХ ПОЛЕЙ ===== */
+.calc-input {
+  background: rgba(253, 183, 59, 0.15);
+  border: 1px solid rgba(253, 183, 59, 0.3);
+  color: #1A1A1A;
+  padding: 12px 16px;
+  border-radius: 8px;
+  width: 100%;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.calc-input:focus {
+  background: #ffffff;
+  border-color: #FDB73B;
+  box-shadow: 0 0 0 4px rgba(253, 183, 59, 0.25);
+  outline: none;
+}
+
+/* ========================================================= */
+/*  СТРЕЛОЧКА ТОЛЬКО ДЛЯ ВЫПАДАЮЩИХ СПИСКОВ (<select>)      */
+/* ========================================================= */
+select.calc-input {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  
+  /* Кастомная светло-оранжевая стрелка */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23FDB73B' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  background-size: 12px;
+}
+
+/* У ОБЫЧНЫХ ТЕКСТОВЫХ ПОЛЕЙ СТРЕЛКИ НЕ БУДЕТ */
+input.calc-input {
+  appearance: auto;
+  background-image: none;
+}
+
+/* ========================================================= */
+/*  ПОЛЕ "КОЛИЧЕСТВО" (УБРАЛИ СТРЕЛКИ, НАРИСОВАЛИ СВОИ)    */
+/* ========================================================= */
+input[type="number"].calc-input {
+  appearance: textfield;
+  -moz-appearance: textfield;
+}
+
+input[type="number"].calc-input::-webkit-inner-spin-button,
+input[type="number"].calc-input::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Кастомная светло-оранжевая стрелка для числового поля */
+input[type="number"].calc-input {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23FDB73B' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  background-size: 12px;
+  padding-right: 40px;
+}
+
+/* ========================================================= */
+/*  ТЕКСТ (LABEL) И ОТСТУПЫ МЕЖДУ ПОЛЯМИ                    */
+/* ========================================================= */
+.calc-label {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #1A1A1A;
+  display: block;
+  margin-bottom: 6px;
+}
+
+.calc-group {
+  margin-bottom: 20px;
+}
+
+.calc-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+.calc-grid .full-width {
+  grid-column: 1 / -1;
+}
+
+.calc-divider {
+  height: 1px;
+  background: #e0e0e0;
+  margin: 30px 0 20px;
+}
+.calc-subtitle {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+/* ===== КНОПКА ОТПРАВКИ ===== */
+.calc-total-wrapper {
+  display: flex;
+  justify-content: center;
+  border-top: 1px solid #e0e0e0;
+  padding-top: 20px;
+  margin-top: 16px;
+}
+
+.btn--primary {
+  background: #ffffff;
+  color: #1A1A1A;
+  border: none;
+  padding: 14px 32px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 15px rgba(253, 183, 59, 0.3);
+  cursor: pointer;
+}
+
+.btn--primary:hover {
+  transform: translateY(-2px) scale(1.03);
+  background: #FDB73B; /* СТАНОВИТСЯ ОРАНЖЕВОЙ */
+  color: #ffffff; /* ТЕКСТ СТАНОВИТСЯ БЕЛЫМ */
+  box-shadow: 0 0 25px rgba(255, 111, 34, 0.4);
+}
+
+/* ===== АДАПТИВ ===== */
+@media (max-width: 768px) {
+  .order-wrapper { padding: 24px 16px; }
+  .calc-grid { grid-template-columns: 1fr; }
+}

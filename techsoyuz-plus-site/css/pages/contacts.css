@@ -1,0 +1,224 @@
+/* css/pages/contacts.css */
+
+.contacts-section {
+    padding: 40px 0 80px;
+    background: var(--color-bg);
+  }
+  
+  .contacts-grid {
+    display: grid;
+    justify-content: center;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+  }
+  
+  .contact-card {
+    background: var(--color-white);
+    border-radius: var(--radius);
+    padding: 32px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease;
+  }
+  
+  .contact-card:hover {
+    transform: translateY(-4px);
+  }
+  
+  .contact-card__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--color-border);
+  }
+  
+  .contact-card__title {
+    font-size: 1.5rem;
+    font-weight: 700;
+  }
+  
+  .contact-card__badge {
+    background: var(--color-primary);
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--color-text-main);
+  }
+  
+  .contact-card__body {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+  
+  .contact-row {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  
+  .contact-label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--color-text-light);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  
+  .contact-value {
+    font-size: 1rem;
+    color: var(--color-text-main);
+    line-height: 1.5;
+  }
+  
+  .contact-value a {
+    color: var(--color-text-main);
+    transition: color 0.3s ease;
+  }
+  
+  .contact-value a:hover {
+    color: var(--color-primary-hover);
+  }
+  
+  .contact-map {
+    border-radius: var(--radius);
+    overflow: hidden;
+    margin-top: 8px;
+  }
+  
+  /* Адаптив */
+  @media (max-width: 992px) {
+    .contacts-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  /* Иконки на странице Контакты (черные) */
+.contact-row .contact-label i {
+  font-size: 1.5rem;
+  margin-right: 8px;
+  vertical-align: middle;
+  color: var(--color-text-main); /* Черный цвет */
+  width: 24px;
+  text-align: center;
+}
+
+.contact-row .contact-label i:hover {
+  color: var(--color-primary); /* Желтый при наведении */
+}
+
+.contacts-wrapper {
+  max-width: 1100px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+}
+
+/* БЕЛЫЕ КАРТОЧКИ */
+.contact-card {
+  background: #ffffff;
+  border-radius: 24px;
+  padding: 40px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.contact-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 40px rgba(253, 183, 59, 0.2);
+}
+
+/* ШАПКА КАРТОЧКИ */
+.contact-card__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.contact-card__title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1A1A1A;
+}
+.contact-card__title span {
+  color: var(--color-accent-yellow); /* ЖЁЛТЫЙ ТЕКСТ */
+}
+
+/* ЖЁЛТЫЙ БЕЙДЖ (Центр / Суздальский) - ОРАНЖЕВЫЙ ФОН */
+.contact-card__badge {
+  background: #FF6F22 !important; /* ОРАНЖЕВЫЙ ФОН */
+  color: #ffffff;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+/* СПИСОК КОНТАКТОВ */
+.contact-row {
+  margin-bottom: 20px;
+}
+.contact-row:last-child {
+  margin-bottom: 0;
+}
+
+.contact-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #888888;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 4px;
+}
+
+/* ЖЁЛТЫЕ ИКОНКИ */
+.contact-label i {
+  color: var(--color-accent-yellow); /* ЖЁЛТЫЙ ЦВЕТ */
+  font-size: 1.1rem;
+  width: 20px;
+  text-align: center;
+}
+
+.contact-value {
+  font-size: 1rem;
+  color: #1A1A1A;
+  line-height: 1.5;
+}
+.contact-value a {
+  color: #1A1A1A;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+.contact-value a:hover {
+  color: var(--color-accent-orange);
+}
+
+/* КАРТЫ */
+.contact-map {
+  margin-top: 25px;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid #e0e0e0;
+}
+
+/* АДАПТИВ */
+@media (max-width: 992px) {
+  .contacts-wrapper {
+    grid-template-columns: 1fr;
+  }
+}
+@media (max-width: 576px) {
+  .contact-card { padding: 24px; }
+}

@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Печать - Техсоюз-Плюс</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <link rel="stylesheet" href="../css/style.css">
+  
+  <style>
+    /* ОРАНЖЕВЫЙ ФОН СТРАНИЦЫ */
+    .printing-section {
+      background-image: url('../images/bg-bottom.jpg') !important;
+      background-size: cover !important;
+      background-position: center bottom !important;
+      background-repeat: no-repeat !important;
+    }
+
+    /* КНОПКИ КАК НА ГЛАВНОЙ */
+    .tab-btn {
+      padding: 14px 32px;
+      font-size: 1rem;
+      font-weight: 600;
+      background: #ffffff !important;
+      color: #1A1A1A !important;
+      border: none;
+      border-radius: 8px;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 15px rgba(253, 183, 59, 0.4) !important;
+      cursor: pointer;
+    }
+    .tab-btn:hover {
+      transform: translateY(-2px) scale(1.03) !important;
+      background: #FDB73B !important;
+      color: #ffffff !important;
+      box-shadow: 0 0 25px rgba(253, 183, 59, 0.6) !important;
+    }
+    .tab-btn.active {
+      background: #FDB73B !important;
+      color: #ffffff !important;
+      box-shadow: 0 0 25px rgba(253, 183, 59, 0.6) !important;
+    }
+    
+    /* СКРЫВАЕМ ТЕКСТ ПЕРЕД ТАБЛИЦЕЙ */
+    .print-info { display: none !important; }
+
+    /* ======================================================== */
+    /*  ТАБЛИЦА: ВСЕ ГРАНИЦЫ БЕЛЫЕ                             */
+    /* ======================================================== */
+    
+    /* ОСНОВНАЯ ТАБЛИЦА (ВНЕШНЯЯ РАМКА БЕЛАЯ) */
+    .price-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+      min-width: 900px;
+      border: 1px solid #ffffff !important; /* БЕЛАЯ ВНЕШНЯЯ РАМКА */
+      
+      /* БЕЛАЯ ПОДСВЕТКА ВОКРУГ ТАБЛИЦЫ */
+      box-shadow: 
+        0 0 40px rgba(255, 255, 255, 0.9),
+        0 0 80px rgba(255, 255, 255, 0.5),
+        0 10px 30px rgba(0, 0, 0, 0.08) !important;
+    }
+
+    /* ШАПКА ТАБЛИЦЫ */
+    .price-table thead th {
+      background: #FDB73B !important;
+      color: #ffffff !important;
+      padding: 12px 6px;
+      font-weight: 600;
+      text-align: center;
+      vertical-align: middle;
+      
+      /* ВСЕ ГРАНИЦЫ ЯЧЕЕК БЕЛЫЕ */
+      border: 1px solid #ffffff !important;
+      
+      /* БЕЛАЯ ПОДСВЕТКА ТЕКСТА */
+     
+    }
+
+    /* ЯЧЕЙКИ ТЕЛА ТАБЛИЦЫ (СВЕТЛО-СЕРЫЕ) */
+    .price-table tbody td {
+      padding: 12px 8px;
+      text-align: center;
+      vertical-align: middle;
+      border: 1px solid #e0e0e0 !important;
+      transition: all 0.2s ease;
+      color: #1A1A1A;
+    }
+
+    /* ПОДСВЕТКА ПРИ НАВЕДЕНИИ (СВЕТЛО-ОРАНЖЕВЫЙ) */
+    .price-table tbody tr:hover td {
+      background: rgba(255, 111, 34, 0.08) !important;
+    }
+    
+    /* ЯЧЕЙКА, НА КОТОРУЮ НАВОДИШЬСЯ (ЧУТЬ ЯРЧЕ) */
+    .price-table tbody td:hover {
+      background: rgba(255, 111, 34, 0.2) !important;
+      cursor: pointer;
+    }
+
+    /* ЗАКРЕПЛЁННАЯ КОЛОНКА (БЕЛЫЕ ГРАНИЦЫ) */
+    .sticky-col {
+      position: sticky;
+      left: 0;
+      background: #ffffff !important;
+      z-index: 10;
+      font-weight: 600;
+      min-width: 90px;
+      border-right: 1px solid #ffffff !important; /* ТЕПЕРЬ БЕЛАЯ ГРАНИЦА */
+    }
+    .price-table thead th.sticky-col {
+      background: #FDB73B !important;
+      border: 1px solid #ffffff !important; /* ТЕПЕРЬ БЕЛАЯ ГРАНИЦА */
+   
+    }
+    
+    /* ПОДСВЕТКА ЗАКРЕПЛЁННОЙ КОЛОНКИ ПРИ НАВЕДЕНИИ */
+    .price-table tbody tr:hover .sticky-col {
+      background: rgba(255, 111, 34, 0.08) !important;
+    }
+    .price-table tbody .sticky-col:hover {
+      background: rgba(255, 111, 34, 0.2) !important;
+    }
+
+    /* ПРИМЕЧАНИЯ ПОД ТАБЛИЦЕЙ */
+    .table-footer {
+      padding: 16px 20px;
+      background: var(--color-white);
+      border-radius: 0 0 var(--radius) var(--radius);
+      margin-top: -4px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+    }
+    .table-footer p {
+      font-size: 0.85rem;
+      color: var(--color-text-light);
+      margin-bottom: 6px;
+      line-height: 1.5;
+    }
+
+    /* АДАПТИВ */
+    @media (max-width: 768px) {
+      .page-header__title { font-size: 2.2rem; }
+      .tabs-nav { gap: 12px; }
+      .tab-btn { padding: 10px 16px; font-size: 0.9rem; }
+      .table-title { font-size: 1.2rem; }
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container header__inner">
+      <a href="../index.html" class="header__logo">Техсоюз<span>-Плюс</span></a>
+      <nav class="header__nav">
+        <ul class="header__list">
+          <li><a href="../index.html" class="header__link">Главная</a></li>
+          <li><a href="about.html" class="header__link">О компании</a></li>
+          <li><a href="printing.html" class="header__link active">Печать</a></li>
+          <li><a href="order.html" class="header__link">Заказ</a></li>
+          <li><a href="contacts.html" class="header__link">Контакты</a></li>
+        </ul>
+        <button class="burger"><span></span><span></span><span></span></button>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-header" data-aos="fade-up">
+      <div class="container">
+        <h1 class="page-header__title">Услуги печати</h1>
+        <p class="page-header__subtitle">Выберите тип печати, ознакомьтесь с ценами</p>
+        <div class="page-header__intro-text">
+          <p>В мире фотопечати легко запутаться даже профессионалу. Чтобы вам было проще, мы разделили печать по трем основным направлениям. Выбирайте то, что подходит именно вам:</p>
+          
+          <p><strong>Фотолаборатория Noritsu 3202</strong> <br>
+            Идеально для: архива, печати с плёнки и больших тиражей.<br>
+            
+            Хотите, чтобы снимки радовали вас десятилетиями? Этот вариант для тех, кто ценит вечность. Лабораторная печать гарантирует стойкость красок к выцветанию, идеально подходит для печати с фотопленки и позволяет быстро обработать большой заказ. Ваши фото будут сохранны в альбоме долгие годы.</p>
+          
+            <p><strong>Фотопринтер EPSON</strong> <br>
+              Идеально для: ярких снимков на каждый день и экономии бюджета.<br>
+              
+              Если вам нужны сочные, живые фотографии, но хочется сэкономить на материалах — это ваш выбор. Мы используем качественный принтер для передачи всех оттенков, а стоимость отпечатка остается более чем доступной. Отличное решение для повседневных фотосессий.</p>
+          
+              <p><strong>Широкоформатная печать</strong> <br>
+            Идеально для: интерьера, подарков и статусных работ. <br>
+            
+            Мечтаете о большой репродукции на стену, стильном портрете на холсте или ярком баннере? Этот раздел создан для масштабных задач. Печатаем любые форматы на плотных материалах, чтобы вы могли украсить дом или сделать запоминающийся подарок близким.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="printing-section">
+      <div class="container">
+        <div class="tabs-nav" data-aos="fade-up" data-aos-delay="100">
+          <button class="tab-btn active" data-tab="lab">Фотолаборатория</button>
+          <button class="tab-btn" data-tab="printer">Печать на принтере</button>
+          <button class="tab-btn" data-tab="wide">Широкоформатная</button>
+        </div>
+
+        <div class="tabs-content">
+          
+          <div class="tab-panel active" id="lab">
+            <div class="print-info" data-aos="fade-up" data-aos-delay="200">
+              <h3 class="print-info__title">Фотолаборатория Noritsu 3202</h3>
+              <div class="print-info__text">
+                <p>При печати фотоснимков на профессиональной фотолаборатории Noritsu-3202 используется фирменная бумага Lucky, а также химикаты, содержащие серебро. Поэтому, напечатанные фотографии могут храниться в неизменном состоянии как минимум 100 лет, не выгорают, при хранении в альбоме, не царапаются и не боятся воды. Для достижения наилучших результатов опытный оператор корректирует Ваши фотографии по цвету, насыщенности и яркости.</p>
+                <p>Вы сами можете заказать фотографии с помощью специально установленного фотокиоска Noritsu. Фотографии на печать принимаются с любых носителей (с флешек, с карт памяти, с CD и DVD дисков, с цветных и черно-белых фотоплёнок). Возможен заказ онлайн - по интернету (WhatsApp, Telegram, E-mail), этим Вы экономите своё время. Готовые фото Вы можете забрать обычно не более, чем через 24 часа, обычно раньше.</p>
+                <p>Фотолаборатория может печатать 1200 фотографий в час. Поэтому даже большой срочный заказ мы можем напечатать за 15-20 минут. А пока Вы ждёте, можете выбрать фотоальбом, фоторамку, или же просто погулять по центральным магазинам.</p>
+                <p>Постоянным клиентам предоставляется скидка 10%, оптовикам – по-договорённости до 40%, также действует система скидок, которая зависит от суммы заказа.</p>
+              </div>
+            </div>
+
+            <div class="price-table-block" data-aos="fade-up" data-aos-delay="300">
+              <h4 class="table-title">Форматы фотографий и цены</h4>
+              <div class="price-table-wrapper">
+                <table class="price-table">
+                  <thead>
+                    <tr>
+                      <th rowspan="2" class="sticky-col">Количество<br>фото</th>
+                    </tr>
+                    <tr>
+                      <th>9x13 *</th>
+                      <th>10x15</th>
+                      <th>13x18 *</th>
+                      <th>15x21</th>
+                      <th>15x23</th>
+                      <th>21x30</th>
+                      <th>30x45</th>
+                      <th>30x90</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr><td class="sticky-col">до 10</td><td>22</td><td>25</td><td>44</td><td>45</td><td>48</td><td>90</td><td>200</td><td>280</td></tr>
+                    <tr><td class="sticky-col">от 10</td><td>18</td><td>20</td><td>36</td><td>39</td><td>41</td><td>80</td><td>180</td><td>250</td></tr>
+                    <tr><td class="sticky-col">от 50</td><td>16</td><td>18</td><td>34</td><td>36</td><td>38</td><td>75</td><td>160</td><td>230</td></tr>
+                    <tr><td class="sticky-col">от 100</td><td>15</td><td>16</td><td>32</td><td>32</td><td>34</td><td>65</td><td>130</td><td>220</td></tr>
+                    <tr><td class="sticky-col">от 200</td><td>14</td><td>15</td><td>30</td><td>30</td><td>32</td><td>60</td><td>130</td><td>220</td></tr>
+                    <tr><td class="sticky-col">от 300</td><td>13</td><td>14</td><td>26</td><td>28</td><td>30</td><td>60</td><td>130</td><td>220</td></tr>
+                    <tr><td class="sticky-col">от 500</td><td>12</td><td>13</td><td>24</td><td>26</td><td>28</td><td>60</td><td>120</td><td>200</td></tr>
+                    <tr><td class="sticky-col">срочно</td><td>26</td><td>30</td><td>50</td><td>52</td><td>54</td><td>100</td><td>230</td><td>350</td></tr>
+                    <tr><td class="sticky-col">срочно от 50</td><td>22</td><td>25</td><td>44</td><td>48</td><td>50</td><td>90</td><td>210</td><td>300</td></tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="table-footer">
+                <p>* Форматы 9x13 и 13x18 на матовой бумаге считаются по колонкам 10x15 и 15x21 соответственно.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="tab-panel" id="printer">
+            <div class="print-info" data-aos="fade-up" data-aos-delay="200">
+              <h3 class="print-info__title">Печать на принтере</h3>
+              <div class="print-info__text">
+                <p>Фотографии, напечатанные на фотопринтере, выходят яркими и красочными. Это благодаря тому, что в принтере Epson L805 используется 6-цветная система чернил, они точно передают все оттенки фотографии. Дополнительно мы используем специальную программу для печати фото, которая дает возможность немного корректировать снимки, делая их светлее, либо темнее, по необходимости. Формат А3 печатается на 6-цветном фотопринтере Epson L1800.</p>
+                <p>Применение оригинальных химических компонентов гарантирует неизменно качественный результат, яркие цвета, а также водоустойчивость. Но, в отличие от лаборатории, фото с принтера не такие устойчивые к выцветанию и царапинам, поэтому лучше хранить их в альбоме. Все же главное их достоинство – это цена, она позволяет почти вдвое сэкономить на печати фото.</p>
+              </div>
+            </div>
+
+            <div class="price-table-block" data-aos="fade-up" data-aos-delay="300">
+              <h4 class="table-title">Печать на фотобумаге</h4>
+              <div class="price-table-wrapper">
+                <table class="price-table">
+                  <thead>
+                    <tr>
+                      <th rowspan="2" class="sticky-col">Количество<br>листов</th>
+                      <th rowspan="2">9х13<br>10х15<br>глянец<br>матовая</th>
+                      <th rowspan="2">15x21<br>13x18<br>глянец<br>матовая</th>
+                      <th colspan="6">21x30</th>
+                      <th rowspan="2">30x42<br>глянец<br>матовая</th>
+                    </tr>
+                    <tr>
+                      <th>матовая<br>190 гр</th>
+                      <th>глянец<br>230 гр</th>
+                      <th>матовая<br>300 гр</th>
+                      <th>2х-сторонняя</th>
+                      <th>самоклеящаяся</th>
+                      <th>плёнка</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr><td class="sticky-col">менее 25</td><td>17</td><td>36</td><td>60</td><td>65</td><td>70</td><td>105</td><td>95</td><td>100</td><td>140</td></tr>
+                    <tr><td class="sticky-col">от 25</td><td>17</td><td>34</td><td>55</td><td>60</td><td>65</td><td>95</td><td>90</td><td>95</td><td>115</td></tr>
+                    <tr><td class="sticky-col">от 50</td><td>16</td><td>32</td><td>50</td><td>55</td><td>60</td><td>90</td><td>85</td><td>90</td><td>100</td></tr>
+                    <tr><td class="sticky-col">от 100</td><td>15</td><td>30</td><td>45</td><td>50</td><td>55</td><td>85</td><td>75</td><td>80</td><td>90</td></tr>
+                    <tr><td class="sticky-col">от 300</td><td>13</td><td>27</td><td>35</td><td>40</td><td>45</td><td>75</td><td>65</td><td>70</td><td>80</td></tr>
+                    <tr><td class="sticky-col">срочно</td><td>22</td><td>36</td><td>60</td><td>65</td><td>70</td><td>105</td><td>95</td><td>100</td><td>140</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <div class="price-table-block" data-aos="fade-up" data-aos-delay="400">
+              <h4 class="table-title">Печать на офисной бумаге</h4>
+              <div class="price-table-wrapper">
+                <table class="price-table">
+                  <thead>
+                    <tr>
+                      <th rowspan="2" class="sticky-col">Количество<br>листов</th>
+                      <th colspan="5">21x30</th>
+                      <th colspan="3">30x42</th>
+                    </tr>
+                    <tr>
+                      <th>чб текст</th>
+                      <th>чб картинка</th>
+                      <th>2х-сторонняя<br> чб</th>
+                      <th>цветная<br>заливка<br>до 50%</th>
+                      <th>цветная<br>заливка<br>>50%</th>
+                      <th>чб текст</th>
+                      <th>цветная<br>заливка<br>до 50%</th>
+                      <th>цветная<br>заливка<br>>50%</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr><td class="sticky-col">менее 25</td><td>12</td><td>15</td><td>17</td><td>19</td><td>25</td><td>45</td><td>45</td><td>60</td></tr>
+                    <tr><td class="sticky-col">от 25</td><td>11</td><td>14</td><td>16</td><td>17</td><td>23</td><td>40</td><td>40</td><td>55</td></tr>
+                    <tr><td class="sticky-col">от 50</td><td>10</td><td>13</td><td>15</td><td>16</td><td>22</td><td>37</td><td>37</td><td>52</td></tr>
+                    <tr><td class="sticky-col">от 100</td><td>9</td><td>12</td><td>14</td><td>14</td><td>20</td><td>35</td><td>35</td><td>48</td></tr>
+                    <tr><td class="sticky-col">от 300</td><td>8</td><td>11</td><td>12</td><td>12</td><td>18</td><td>35</td><td>35</td><td>48</td></tr>
+                    <tr><td class="sticky-col">срочно</td><td>12</td><td>15</td><td>17</td><td>19</td><td>25</td><td>45</td><td>45</td><td>60</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <div class="tab-panel" id="wide">
+            <div class="print-info" data-aos="fade-up" data-aos-delay="200">
+              <h3 class="print-info__title">Широкоформатная печать</h3>
+              <div class="print-info__text">
+                <p>В нашем фотосалоне есть возможность напечатать фотоснимки огромных размеров. Мы печатаем не только на различных фотобумагах, но и на холсте, баннерной ткани, самоклеящихся плёнках (обычной и транслюцентной), постерной бумаге. Это могут быть фотоснимки любого размера от 40х60 см до самых больших – 160х250 см.</p>
+                <p>Широкоформатный плоттер TwinJet SJ-1605 позволяет распечатать фотографии шириной до 160 см и практически любой длины! Разрешение печати - 1440 dpi, 8 цветов. Благодаря применению высококачественных экосольвентных чернил (Green Eco 360, Nature Eco 360), такие снимки не выгорают на солнце, что бесспорно будет радовать Вас долгие годы.</p>
+                <p>Печать на холсте, постере, фотобумаге, плёнке.<br>
+                Печать фотоснимков на холсте – это возможность из обычного изображения сделать картину. Ваши фотоснимки будут напечатаны на натуральном холсте из хлопка, который придаёт изображению интересную живописную фактуру. На холст нанесено полимерное покрытие для улучшения проработки полутонов при фотопечати.</p>
+                <p>Напечатанное полотно натягивается на подрамник из дерева, далее его можно оформить багетом, а можно оставить как есть. Такой холст может стать не только прекрасным украшением Вашего дома, но и прекрасным подарком на юбилей, день рождения, свадьбу и др. торжества. На холсте также можно напечатать репродукции любимых картин.</p>
+              </div>
+            </div>
+
+            <div class="price-table-block" data-aos="fade-up" data-aos-delay="300">
+              <h4 class="table-title">Типы бумаги, форматы и цены</h4>
+              <div class="price-table-wrapper">
+                <table class="price-table">
+                  <thead>
+                    <tr>
+                      <th rowspan="2" class="sticky-col">Типы бумаги</th>
+                    </tr>
+                    <tr>
+                      <th>30x40 <br>A3</th>
+                      <th>40x50</th>
+                      <th>40x60 <br>A2</th>
+                      <th>50x70</th>
+                      <th>60x80 <br>A1</th>
+                      <th>90x120<br> A0</th>
+                      <th>Плотность<br>материала</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr><td class="sticky-col">Глянец 6 цветов *</td><td>140 р.</td><td>450-700 р.</td><td>450-750 р.</td><td>550-1050 р.</td><td>750-1400 р.</td><td>1500 р.</td><td>190 г/м2</td></tr>
+                    <tr><td class="sticky-col">Холст тканый без подрамника</td><td>500 р.</td><td>800 р.</td><td>960 р.</td><td>1400 р.</td><td>1920 р.</td><td>4320 р.</td><td>380 г/м2</td></tr>
+                    <tr><td class="sticky-col">Холст тканый под натяжку (+10см)</td><td>700 р.</td><td>990 р.</td><td>1170 р.</td><td>1650 р.</td><td>2210 р.</td><td>4750 р.</td><td>380 г/м2</td></tr>
+                    <tr><td class="sticky-col">Холст тканый с подрамником</td><td>1260 р.</td><td>1800 р.</td><td>2070 р.</td><td>2730 р.</td><td>3470 р.</td><td>6640 р.</td><td>380 г/м2</td></tr>
+                    <tr><td class="sticky-col">Самоклеящаяся плёнка (глянец, матовая, прозрачная)</td><td>200 р.</td><td>540 р.</td><td>650 р.</td><td>950 р.</td><td>1300 р.</td><td>2600 р.</td><td>180 г/м2</td></tr>
+                    <tr><td class="sticky-col">Постер</td><td>-</td><td>450 р.</td><td>450 р.</td><td>550 р.</td><td>750 р.</td><td>1600 р.</td><td>115 г/м2</td></tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="table-footer">
+                <p>* Цены на печать на фотобумаге зависят от количества расходуемых чернил.<br>
+                Срок выполнения заказа - от 3 до 5 дней.<br>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div class="footer-col">
+        <div class="footer-col__title"><span>Центр</span></div>
+        <p>ул. Большая Московская, 12</p>
+        <p><a href="tel:84922421226">8 (4922) 42-12-26</a></p>
+        <p><a href="tel:89040318924">8 (904) 031-89-24</a></p>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col__title"><span>Суздальский</span></div>
+        <p>Суздальский проспект, 15</p>
+        <p><a href="tel:89106726819">8 (910) 672-68-19</a></p>
+      </div>
+      <div class="footer__copy">&copy; 2026 Техсоюз-Плюс. Все права защищены.</div>
+    </div>
+  </footer>
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="../js/main.js"></script>
+  <script src="../js/pages/printing.js"></script>
+</body>
+</html>

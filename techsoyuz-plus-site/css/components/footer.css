@@ -1,0 +1,78 @@
+/* css/components/footer.css */
+.footer {
+  padding: 50px 0 20px;
+  background: var(--color-text-main);
+  color: var(--color-white);
+}
+
+.footer__inner {
+  display: flex;
+  justify-content: center;
+  padding-right: 0px;
+  padding-left: px;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 0px; /* Убираем лишний gap, чтобы работала логика 50/50 */
+  max-width: var(--container-width);
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.footer-col {
+  flex: 1; /* Обе колонки растягиваются поровну */
+  max-width: 350px; /* Ограничиваем ширину, чтобы не были слишком широкими */
+  text-align: left;
+  padding: 0 30px; /* Одинаковые внутренние отступы от краёв */
+}
+
+.footer-col__title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 12px;
+  color: #ffffff;
+  opacity: 0.9;
+}
+
+/* Оранжевая подсветка */
+.footer-col__title span {
+  color: var(--color-accent-orange);
+}
+
+.footer-col p, 
+.footer-col a {
+  display: block;
+  font-size: 0.95rem;
+  color: #bbbbbb;
+  line-height: 1.6;
+  margin-bottom: 6px;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-col a:hover {
+  color: var(--color-accent-orange);
+}
+
+.footer__copy {
+  width: 100%;
+  text-align: center;
+  margin-top: 40px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 0.85rem;
+  opacity: 0.6;
+}
+
+@media (max-width: 768px) {
+  .footer__inner {
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+  }
+  .footer-col {
+    flex: 1;
+    width: 100%;
+    text-align: center;
+    padding: 0;
+  }
+}

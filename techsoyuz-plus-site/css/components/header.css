@@ -1,0 +1,109 @@
+/* css/components/header.css */
+.header {
+  background: rgba(255, 255, 255, 0.9); /* Стеклянный эффект */
+  backdrop-filter: blur(10px);
+  height: 80px;
+  position: absolute; /* Абсолютное позиционирование поверх фона */
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+  border-bottom: none; /* Убираем нижнюю границу */
+  box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+}
+
+.header__inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+}
+
+.header__logo {
+  font-weight: 700;
+  font-size: 1.3rem;
+  color: #1A1A1A;
+  line-height: 1;
+  padding: 8px 0;
+}
+
+/* Перекрашиваем -Плюс в акцентный цвет */
+.header__logo span {
+  color: var(--color-accent-orange, #FF6F22);
+}
+
+.header__list {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.header__link {
+  font-weight: 500;
+  color: #4A4A4A;
+  transition: all 0.3s;
+  padding: 28px 0;
+  display: block;
+  position: relative;
+}
+
+.header__link:hover, .header__link.active {
+  color: var(--color-accent-orange); /* Оранжевый при наведении */
+}
+
+/* Желтая подчеркивающая линия */
+.header__link.active::after {
+  content: '';
+  display: block;
+  height: 3px;
+  background: var(--color-accent-yellow);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  border-radius: 2px;
+}
+
+/* Бургер */
+.burger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  padding: 0;
+  background: none;
+}
+.burger span {
+  width: 25px;
+  height: 2px;
+  background: #1A1A1A;
+  transition: 0.3s;
+}
+
+@media (max-width: 768px) {
+  .header {
+    background: #fff;
+    backdrop-filter: none;
+    position: sticky; /* На мобилке шапка прилипает */
+  }
+  .header__list {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 80px;
+    left: 0;
+    width: 100%;
+    background: #fff;
+    padding: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    gap: 1.5rem;
+    height: auto;
+    align-items: flex-start;
+  }
+  .header__list.open { display: flex; }
+  .header__link { padding: 4px 0; }
+  .burger { display: flex; }
+}

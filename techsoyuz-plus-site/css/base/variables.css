@@ -1,0 +1,14 @@
+:root {
+    --color-primary: #FFFF4A;
+    --color-primary-hover: #E5E53A;
+    --color-bg: #F8F8F8;
+    --color-white: #FFFFFF;
+    --color-text-main: #1A1A1A;
+    --color-text-light: #5A5A5A;
+  
+    --font-main: 'Inter', sans-serif;
+    
+    --container-width: 1200px;
+    --header-height: 80px;
+    --radius: 8px;
+  }

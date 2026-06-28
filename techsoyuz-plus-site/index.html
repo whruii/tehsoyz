@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Техсоюз-Плюс - Фотомагазин</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css?v=2">
+</head>
+<body>
+
+<header class="header">
+  <div class="container header__inner">
+    <a href="index.html" class="header__logo">Техсоюз<span>-Плюс</span></a>
+    <nav class="header__nav">
+      <ul class="header__list">
+        <li><a href="index.html" class="header__link active">Главная</a></li>
+        <li><a href="pages/about.html" class="header__link">О компании</a></li>
+        <li><a href="pages/printing.html" class="header__link">Печать</a></li>
+        <li><a href="pages/order.html" class="header__link">Заказ</a></li>
+        <li><a href="pages/contacts.html" class="header__link">Контакты</a></li>
+      </ul>
+      <button class="burger"><span></span><span></span><span></span></button>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="container">
+      <div class="hero__text" data-aos="fade-right" data-aos-duration="1000">
+        <h1>Профессиональная <br><span>печать</span> и <span>фотоуслуги</span></h1>
+        <p>Японская лаборатория Noritsu 3202. Более 15 лет опыта. Фотографии от 13 рублей.</p>
+        <div class="hero__actions">
+          <a href="pages/order.html" class="btn btn--primary">Оформить заказ</a>
+          <a href="pages/printing.html" class="btn btn--outline">Узнать цены</a>
+        </div>
+      </div>
+      <div class="hero__slider" data-aos="fade-left" data-aos-duration="1000">
+        <div class="hero-slider">
+          <div class="slide active"><img src="images/photo1.jpg" alt="1"></div>
+          <div class="slide"><img src="images/photo2.jpg" alt="2"></div>
+          <div class="slide"><img src="images/photo3.jpg" alt="3"></div>
+          <div class="slide"><img src="images/photo4.jpg" alt="4"></div>
+          <div class="slide"><img src="images/photo5.jpg" alt="5"></div>
+          <div class="slide"><img src="images/photo6.jpg" alt="6"></div>
+          <button class="slider-btn slider-btn--prev">❮</button>
+          <button class="slider-btn slider-btn--next">❯</button>
+          <div class="slider-dots">
+            <span class="dot active" data-slide="0"></span><span class="dot" data-slide="1"></span><span class="dot" data-slide="2"></span><span class="dot" data-slide="3"></span><span class="dot" data-slide="4"></span><span class="dot" data-slide="5"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="features">
+    <div class="container">
+      <h2 class="features__title" data-aos="fade-up">Почему выбирают <span>нас</span></h2>
+      <div class="features__grid">
+        <div class="feature-card" data-aos="fade-up" data-aos-delay="100">
+          <div class="feature-card__icon"><img src="images/icons/icon-1.png" alt=""></div>
+          <h3 class="feature-card__title">Удобное расположение</h3>
+          <p class="feature-card__desc">70 метров от Золотых ворот. Большая бесплатная парковка первые 15 минут.</p>
+        </div>
+        <div class="feature-card" data-aos="fade-up" data-aos-delay="200">
+          <div class="feature-card__icon"><img src="images/icons/icon-2.PNG" alt=""></div>
+          <h3 class="feature-card__title">Профессиональная печать</h3>
+          <p class="feature-card__desc">Японская фотолаборатория Noritsu 3202. Фирменная бумага Lucky.</p>
+        </div>
+        <div class="feature-card" data-aos="fade-up" data-aos-delay="300">
+          <div class="feature-card__icon"><img src="images/icons/icon-3.PNG" alt=""></div>
+          <h3 class="feature-card__title">Опыт более 15 лет</h3>
+          <p class="feature-card__desc">Мы обрабатываем и печатаем фотографии с 2010 года.</p>
+        </div>
+        <div class="feature-card" data-aos="fade-up" data-aos-delay="400">
+          <div class="feature-card__icon"><img src="images/icons/icon-4.PNG" alt=""></div>
+          <h3 class="feature-card__title">Доступные цены</h3>
+          <p class="feature-card__desc">Фото 10х15 см — от 13 рублей. Скидки до 40% для постоянных клиентов.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+    <div class="container footer__inner">
+      <div class="footer-col"><div class="footer-col__title"><span>Центр</span></div><p>ул. Большая Московская, 12</p><p><a href="tel:84922421226">8 (4922) 42-12-26</a></p><p><a href="tel:89040318924">8 (904) 031-89-24</a></p></div>
+      <div class="footer-col"><div class="footer-col__title"><span>Суздальский</span></div><p>Суздальский проспект, 15</p><p><a href="tel:89106726819">8 (910) 672-68-19</a></p></div>
+      <div class="footer__copy">&copy; 2026 Техсоюз-Плюс. Все права защищены.</div>
+    </div>
+  </footer>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
