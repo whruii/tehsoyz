@@ -20,7 +20,7 @@
       --color-accent-orange: #FF6F22;
     }
 
-    /* ===== СЕКЦИЯ С ОРАНЖЕВЫМ ФОНОМ ===== */
+    /* ===== ОРАНЖЕВЫЙ ФОН ===== */
     .contacts-section {
       background-image: url('../images/bg-bottom.jpg') !important;
       background-size: cover !important;
@@ -29,17 +29,19 @@
       background-color: #FDB73B !important;
       padding: 60px 0 80px !important;
       width: 100% !important;
-      display: flex !important;
+      text-align: center !important; /* Центрируем контент внутри */
     }
 
+    /* ===== КОНТЕЙНЕР ДЛЯ КАРТОЧЕК (ИДЕАЛЬНОЕ ЦЕНТРИРОВАНИЕ) ===== */
     .contacts-wrapper {
-      max-width: 1000px !important;
+      max-width: 1400px !important;
       width: 100% !important;
-      margin: 0 !important; /* Убрали центрирование */
-      padding: 0 !important;
+      margin: 0 auto !important; /* СТРОГО ПО ЦЕНТРУ */
+      padding: 0 20px !important;
       display: grid !important;
       grid-template-columns: 1fr 1fr !important;
       gap: 30px !important;
+      text-align: left !important; /* Текст внутри карточек по левому краю */
     }
 
     /* ===== БЕЛЫЕ КАРТОЧКИ ===== */
@@ -55,7 +57,7 @@
       box-shadow: 0 12px 40px rgba(253, 183, 59, 0.2) !important;
     }
 
-    /* ===== ШАПКА КАРТОЧКИ ===== */
+    /* ===== ЗАГОЛОВКИ ===== */
     .contact-card__header {
       display: flex !important;
       justify-content: space-between !important;
@@ -71,10 +73,10 @@
       color: #1A1A1A !important;
     }
     .contact-card__title span {
-      color: var(--color-accent-yellow) !important; /* ЖЁЛТЫЙ ТЕКСТ */
+      color: var(--color-accent-yellow) !important;
     }
 
-    /* ===== СПИСОК КОНТАКТОВ ===== */
+    /* ===== ИНФОРМАЦИЯ ===== */
     .contact-row {
       margin-bottom: 20px !important;
     }
@@ -96,7 +98,7 @@
 
     /* ===== ЖЁЛТЫЕ ИКОНКИ ===== */
     .contact-label i {
-      color: var(--color-accent-yellow) !important; /* ЖЁЛТЫЙ ЦВЕТ */
+      color: var(--color-accent-yellow) !important;
       font-size: 1.1rem !important;
       width: 20px !important;
       text-align: center !important;
@@ -116,18 +118,14 @@
       color: var(--color-accent-orange) !important;
     }
 
-    /* ===== КАРТЫ (ДОБАВЛЕНА ЖЁЛТАЯ ПОДСВЕТКА) ===== */
+    /* ===== КАРТЫ ===== */
     .contact-map {
       margin-top: 25px !important;
       border-radius: 16px !important;
       overflow: hidden !important;
       border: 1px solid #e0e0e0 !important;
-      
-      /* Плавная анимация для свечения */
       transition: box-shadow 0.3s ease, transform 0.3s ease !important;
     }
-
-    /* ЖЁЛТАЯ ПОДСВЕТКА ПРИ НАВЕДЕНИИ */
     .contact-map:hover {
       box-shadow: 0 0 25px rgba(253, 183, 59, 0.7) !important;
       transform: scale(1.01) !important;
@@ -137,10 +135,6 @@
     @media (max-width: 992px) {
       .contacts-wrapper {
         grid-template-columns: 1fr !important;
-      }
-      .contacts-section {
-        justify-content: center !important;
-        padding-left: 0 !important;
       }
     }
     @media (max-width: 576px) {
@@ -174,7 +168,7 @@
       </div>
     </section>
 
-    <!-- СЕКЦИЯ С КАРТОЧКАМИ НА ОРАНЖЕВОМ ФОНЕ -->
+    <!-- СЕКЦИЯ С КАРТОЧКАМИ -->
     <section class="contacts-section">
       <div class="contacts-wrapper">
         
@@ -209,7 +203,8 @@
             </div>
           </div>
           <div class="contact-map">
-            <div style="position:relative;overflow:hidden;"><a href="https://yandex.ru/maps/org/tekhsoyuz_plyus/1207625015/?utm_medium=mapframe&utm_source=maps" style="color:#eee;font-size:12px;position:absolute;top:0px;">Техсоюз-Плюс</a><a href="https://yandex.ru/maps/192/vladimir/category/photo_shop/184107841/?utm_medium=mapframe&utm_source=maps" style="color:#eee;font-size:12px;position:absolute;top:14px;">Фотомагазин во Владимире</a><a href="https://yandex.ru/maps/192/vladimir/category/photography/184108261/?utm_medium=mapframe&utm_source=maps" style="color:#eee;font-size:12px;position:absolute;top:28px;">Фотоуслуги во Владимире</a><iframe src="https://yandex.ru/map-widget/v1/?from=mapframe&ll=40.399542%2C56.127071&mode=search&oid=1207625015&ol=biz&source=mapframe&um=constructor%3A8e2d2e2c3f2e2b2d2c2e2f2g2h2i2j2k2l2m2n2o2p2q2r2s2t2u2v2w2x2y2z&utm_source=mapframe&z=19.4" width="560" height="400" frameborder="1" allowfullscreen="true" style="position:relative;"></iframe></div>          </div>
+            <div style="position:relative;overflow:hidden;"><a href="https://yandex.ru/maps/org/tekhsoyuz_plyus/1207625015/?utm_medium=mapframe&utm_source=maps" style="color:#eee;font-size:12px;position:absolute;top:0px;">Техсоюз-Плюс</a><a href="https://yandex.ru/maps/192/vladimir/category/photo_shop/184107841/?utm_medium=mapframe&utm_source=maps" style="color:#eee;font-size:12px;position:absolute;top:14px;">Фотомагазин во Владимире</a><a href="https://yandex.ru/maps/192/vladimir/category/photography/184108261/?utm_medium=mapframe&utm_source=maps" style="color:#eee;font-size:12px;position:absolute;top:28px;">Фотоуслуги во Владимире</a><iframe src="https://yandex.ru/map-widget/v1/?from=mapframe&ll=40.399542%2C56.127071&mode=search&oid=1207625015&ol=biz&source=mapframe&um=constructor%3A8e2d2e2c3f2e2b2d2c2e2f2g2h2i2j2k2l2m2n2o2p2q2r2s2t2u2v2w2x2y2z&utm_source=mapframe&z=19.4" width="560" height="400" frameborder="1" allowfullscreen="true" style="position:relative;"></iframe></div>
+          </div>
         </div>
 
         <!-- КАРТОЧКА: СУЗДАЛЬСКИЙ -->
@@ -240,7 +235,8 @@
             </div>
           </div>
           <div class="contact-map">
-            <div style="position:relative;overflow:hidden;"><a href="https://yandex.ru/maps/org/fototsentr/1201904919/?utm_medium=mapframe&utm_source=maps" style="color:#eee;font-size:12px;position:absolute;top:0px;">Фотоцентр</a><a href="https://yandex.ru/maps/192/vladimir/category/photography/184108261/?utm_medium=mapframe&utm_source=maps" style="color:#eee;font-size:12px;position:absolute;top:14px;">Фотоуслуги во Владимире</a><a href="https://yandex.ru/maps/192/vladimir/category/large_format_printing/184107120/?utm_medium=mapframe&utm_source=maps" style="color:#eee;font-size:12px;position:absolute;top:28px;">Широкоформатная печать во Владимире</a><iframe src="https://yandex.ru/map-widget/v1/?from=mapframe&ll=40.460880%2C56.172693&mode=search&oid=1201904919&ol=biz&source=mapframe&um=constructor%3A8e2d2e2c3f2e2b2d2c2e2f2g2h2i2j2k2l2m2n2o2p2q2r2s2t2u2v2w2x2y2z&utm_source=mapframe&z=15.32" width="560" height="400" frameborder="1" allowfullscreen="true" style="position:relative;"></iframe></div>          </div>
+            <div style="position:relative;overflow:hidden;"><a href="https://yandex.ru/maps/org/fototsentr/1201904919/?utm_medium=mapframe&utm_source=maps" style="color:#eee;font-size:12px;position:absolute;top:0px;">Фотоцентр</a><a href="https://yandex.ru/maps/192/vladimir/category/photography/184108261/?utm_medium=mapframe&utm_source=maps" style="color:#eee;font-size:12px;position:absolute;top:14px;">Фотоуслуги во Владимире</a><a href="https://yandex.ru/maps/192/vladimir/category/large_format_printing/184107120/?utm_medium=mapframe&utm_source=maps" style="color:#eee;font-size:12px;position:absolute;top:28px;">Широкоформатная печать во Владимире</a><iframe src="https://yandex.ru/map-widget/v1/?from=mapframe&ll=40.460880%2C56.172693&mode=search&oid=1201904919&ol=biz&source=mapframe&um=constructor%3A8e2d2e2c3f2e2b2d2c2e2f2g2h2i2j2k2l2m2n2o2p2q2r2s2t2u2v2w2x2y2z&utm_source=mapframe&z=15.32" width="560" height="400" frameborder="1" allowfullscreen="true" style="position:relative;"></iframe></div>
+          </div>
         </div>
 
       </div>

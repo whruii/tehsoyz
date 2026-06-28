@@ -1,4 +1,5 @@
 /* css/components/footer.css */
+
 .footer {
   padding: 50px 0 20px;
   background: var(--color-text-main);
@@ -7,22 +8,20 @@
 
 .footer__inner {
   display: flex;
-  justify-content: center;
-  padding-right: 0px;
-  padding-left: px;
+  justify-content: center; /* Центрируем всё по горизонтали */
   align-items: flex-start;
   flex-wrap: wrap;
-  gap: 0px; /* Убираем лишний gap, чтобы работала логика 50/50 */
+  gap: 60px; /* Базовое расстояние между колонками */
   max-width: var(--container-width);
   margin: 0 auto;
   padding: 0 20px;
 }
 
+/* Сами колонки */
 .footer-col {
-  flex: 1; /* Обе колонки растягиваются поровну */
-  max-width: 350px; /* Ограничиваем ширину, чтобы не были слишком широкими */
+  flex: 0 0 auto; /* Не растягиваются, занимают свою ширину */
+  width: 220px;   /* Фиксированная ширина, чтобы стояли ровно */
   text-align: left;
-  padding: 0 30px; /* Одинаковые внутренние отступы от краёв */
 }
 
 .footer-col__title {
@@ -33,7 +32,7 @@
   opacity: 0.9;
 }
 
-/* Оранжевая подсветка */
+/* Оранжевая подсветка названия */
 .footer-col__title span {
   color: var(--color-accent-orange);
 }
@@ -53,6 +52,7 @@
   color: var(--color-accent-orange);
 }
 
+/* Копирайт */
 .footer__copy {
   width: 100%;
   text-align: center;
@@ -63,6 +63,17 @@
   opacity: 0.6;
 }
 
+/* =========================================================== */
+/*  СДВИГ КОЛОНКИ "СУЗДАЛЬСКИЙ" ПРАВЕЕ (МЕНЯЙ ЦИФРУ ЗДЕСЬ!)   */
+/* =========================================================== */
+.footer-col:last-child {
+  margin-left: 100px !important; /* ЗАМЕНИ 60 НА СВОЁ ЧИСЛО! */
+}
+
+
+/* =========================================================== */
+/*  АДАПТИВ (МОБИЛЬНЫЕ)                                        */
+/* =========================================================== */
 @media (max-width: 768px) {
   .footer__inner {
     flex-direction: column;
@@ -70,9 +81,8 @@
     gap: 30px;
   }
   .footer-col {
-    flex: 1;
     width: 100%;
     text-align: center;
-    padding: 0;
+    margin-left: 0 !important; /* На мобильных отменяем сдвиг */
   }
 }
