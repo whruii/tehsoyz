@@ -8,26 +8,80 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <link rel="stylesheet" href="../css/style.css">
-
-    <!-- Фон и стили полей для страницы заказа -->
-    <style>
-    .order-section {
-  padding: 60px 0 80px;
   
-  /* ВСТАВЛЯЕМ ТВОЙ ОРАНЖЕВЫЙ ФОН СЗАДИ */
-  background-image: url('../images/bg-bottom.jpg');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
- /* Запасной цвет */
-  width: 100%;
-}
-      
-      /* Поля: светло-оранжевые, без серого фона */
-      
-    </style>
+  <style>
+    .order-section {
+      padding: 60px 0 80px;
+      background-image: url('../images/bg-bottom.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      width: 100%;
+    }
+    .order-wrapper {
+      background: #ffffff !important;
+      max-width: 850px;
+      margin: 0 auto;
+      padding: 40px;
+      border-radius: 24px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+    }
+    .calc-input {
+      background: rgba(253, 183, 59, 0.15) !important;
+      border: 1px solid rgba(253, 183, 59, 0.3) !important;
+      color: #1A1A1A !important;
+      padding: 12px 16px !important;
+      border-radius: 8px !important;
+      width: 100% !important;
+      font-size: 1rem !important;
+      transition: all 0.3s ease !important;
+    }
+    .calc-input:focus {
+      background: #ffffff !important;
+      border-color: #FDB73B !important;
+      box-shadow: 0 0 0 4px rgba(253, 183, 59, 0.25) !important;
+      outline: none !important;
+    }
+    select.calc-input {
+      appearance: none !important;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23FDB73B' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E") !important;
+      background-repeat: no-repeat !important;
+      background-position: right 16px center !important;
+      background-size: 12px !important;
+    }
+    input.calc-input { appearance: auto !important; background-image: none !important; }
+    input[type="number"].calc-input {
+      appearance: textfield !important;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23FDB73B' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E") !important;
+      background-repeat: no-repeat !important;
+      background-position: right 16px center !important;
+      background-size: 12px !important;
+      padding-right: 40px !important;
+    }
+    input[type="number"].calc-input::-webkit-inner-spin-button,
+    input[type="number"].calc-input::-webkit-outer-spin-button {
+      -webkit-appearance: none !important;
+      margin: 0 !important;
+    }
+    .calc-label {
+      font-size: 0.95rem !important;
+      font-weight: 600 !important;
+      color: #1A1A1A !important;
+      display: block !important;
+      margin-bottom: 6px !important;
+    }
+    .calc-group { margin-bottom: 20px !important; }
+    .calc-grid { display: grid !important; grid-template-columns: 1fr 1fr !important; gap: 20px !important; }
+    .calc-grid .full-width { grid-column: 1 / -1 !important; }
+    .calc-divider { height: 1px !important; background: #e0e0e0 !important; margin: 30px 0 20px !important; }
+    .calc-total-wrapper { display: flex !important; justify-content: center !important; border-top: 1px solid #e0e0e0 !important; padding-top: 20px !important; margin-top: 16px !important; }
+    .btn--primary { background: #ffffff !important; color: #1A1A1A !important; border: none !important; padding: 14px 32px !important; border-radius: 8px !important; font-weight: 600 !important; font-size: 1rem !important; transition: all 0.3s ease !important; box-shadow: 0 0 15px rgba(253, 183, 59, 0.3) !important; cursor: pointer !important; }
+    .btn--primary:hover { transform: translateY(-2px) scale(1.03) !important; background: #FDB73B !important; color: #1A1A1A !important; box-shadow: 0 0 25px rgba(253, 183, 59, 0.5) !important; }
+    @media (max-width: 768px) { .order-wrapper { padding: 24px 16px !important; } .calc-grid { grid-template-columns: 1fr !important; } }
+  </style>
 </head>
 <body>
   <header class="header">
@@ -57,22 +111,17 @@
     <section class="order-section">
       <div class="container">
         <div class="order-wrapper" data-aos="fade-up" data-aos-delay="100">
-          
-          <!-- Вкладки выбора печати -->
           <div class="tabs-nav order-tabs">
             <button class="tab-btn active" data-tab="order-lab">Фотолаборатория</button>
             <button class="tab-btn" data-tab="order-printer">Печать на принтере</button>
             <button class="tab-btn" data-tab="order-wide">Широкоформатная</button>
           </div>
 
-          <!-- Форма заказа -->
-          <form id="orderForm" class="order-calculator" onsubmit="return false;">
-            
-            <!-- ================= ВКЛАДКА 1: ЛАБОРАТОРИЯ ================= -->
+          <form id="orderForm" class="order-calculator">
             <div class="tab-panel active" id="order-lab">
               <div class="calc-group">
                 <label class="calc-label">Формат</label>
-                <select class="calc-input">
+                <select class="calc-input" id="lab-format">
                   <option>9х13 см</option>
                   <option>10x15 см</option>
                   <option>13х18 см</option>
@@ -85,18 +134,17 @@
               </div>
               <div class="calc-group">
                 <label class="calc-label">Тип бумаги</label>
-                <select class="calc-input">
+                <select class="calc-input" id="lab-paper">
                   <option>Глянец</option>
                   <option>Матовая</option>
                 </select>
               </div>
               <div class="calc-group">
                 <label class="calc-label">Количество фото</label>
-                <input type="number" class="calc-input" value="1" min="1" max="1000">
+                <input type="number" class="calc-input" id="lab-qty" value="1" min="1" max="1000">
               </div>
             </div>
 
-            <!-- ================= ВКЛАДКА 2: ПРИНТЕР ================= -->
             <div class="tab-panel" id="order-printer">
               <div class="calc-group">
                 <label class="calc-label">Категория бумаги</label>
@@ -105,8 +153,6 @@
                   <option value="photo">Фотобумага</option>
                 </select>
               </div>
-              
-              <!-- Офисная бумага -->
               <div id="printer-office-group" class="sub-group">
                 <div class="calc-group">
                   <label class="calc-label">Формат</label>
@@ -117,13 +163,9 @@
                 </div>
                 <div class="calc-group">
                   <label class="calc-label">Вид печати</label>
-                  <select id="office-type" class="calc-input">
-                    <!-- Заполняется через JS -->
-                  </select>
+                  <select id="office-type" class="calc-input"></select>
                 </div>
               </div>
-
-              <!-- Фотобумага -->
               <div id="printer-photo-group" class="sub-group" style="display: none;">
                 <div class="calc-group">
                   <label class="calc-label">Формат</label>
@@ -138,20 +180,15 @@
                 </div>
                 <div class="calc-group">
                   <label class="calc-label">Тип бумаги</label>
-                  <select id="photo-type" class="calc-input">
-                    <!-- Заполняется через JS -->
-                  </select>
+                  <select id="photo-type" class="calc-input"></select>
                 </div>
               </div>
-
               <div class="calc-group">
                 <label class="calc-label">Количество фото</label>
-                <input type="number" class="calc-input" value="1" min="1" max="1000">
+                <input type="number" class="calc-input" id="printer-qty" value="1" min="1" max="1000">
               </div>
-             
             </div>
 
-            <!-- ================= ВКЛАДКА 3: ШИРОКОФОРМАТНАЯ (НОВАЯ, ПО ТАБЛИЦЕ) ================= -->
             <div class="tab-panel" id="order-wide">
               <div class="calc-group">
                 <label class="calc-label">Тип бумаги</label>
@@ -164,14 +201,10 @@
                   <option value="poster">Постер</option>
                 </select>
               </div>
-
               <div class="calc-group">
                 <label class="calc-label">Размер (Формат)</label>
-                <select id="wide-size" class="calc-input">
-                  <!-- Заполняется через JS -->
-                </select>
+                <select id="wide-size" class="calc-input"></select>
               </div>
-
               <div class="calc-group" id="wide-film-group" style="display: none;">
                 <label class="calc-label">Тип плёнки</label>
                 <select id="wide-film-type" class="calc-input">
@@ -180,49 +213,40 @@
                   <option>Прозрачная</option>
                 </select>
               </div>
-
               <div class="calc-group">
                 <label class="calc-label">Количество (м²)</label>
                 <input type="number" id="wide-qty" class="calc-input" value="1" min="1" max="100" step="0.1">
               </div>
             </div>
 
-            <!-- ================= ОБЩИЕ ПОЛЯ (КОНТАКТНЫЕ ДАННЫЕ) ================= -->
-                        <!-- КОНТАКТНЫЕ ДАННЫЕ -->
-                        <div class="calc-divider" style="height: 1px; background: #e0e0e0; margin: 30px 0 20px;"></div>
-                        <h3 style="font-size: 1.3rem; font-weight: 600; margin-bottom: 20px; color: #1A1A1A;">Ваши контактные данные</h3>
-                        
-                        <div class="calc-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
-                          <div class="calc-group">
-                            <label class="calc-label">Ваше имя</label>
-                            <input type="text" id="client-name" class="calc-input" placeholder="Иван Иванов" required>
-                          </div>
-                          <div class="calc-group">
-                            <label class="calc-label">Номер телефона</label>
-                            <input type="tel" id="client-phone" class="calc-input" placeholder="+7 (999) 123-45-67" required>
-                            <div id="phone-error" class="error-message" style="display: none; color: #FF6F22; font-size: 0.85rem; margin-top: 4px;"></div>
-                          </div>
-                          <div class="calc-group full-width" style="grid-column: 1 / -1;">
-                            <label class="calc-label">Ваша почта</label>
-                            <input type="email" id="client-email" class="calc-input" placeholder="example@mail.ru" required>
-                            <div id="email-error" class="error-message" style="display: none; color: #FF6F22; font-size: 0.85rem; margin-top: 4px;"></div>
-                          </div>
-                          <div class="calc-group full-width" style="grid-column: 1 / -1;">
-                            <label class="calc-label">Ссылка на Яндекс.Диск или архив с фотографиями</label>
-                            <input type="url" id="client-link" class="calc-input" placeholder="https://disk.yandex.ru/...">
-                          </div>
-                          <!-- НОВОЕ ПОЛЕ: КОММЕНТАРИЙ -->
-                          <div class="calc-group full-width" style="grid-column: 1 / -1;">
-                            <label class="calc-label">Комментарий</label>
-                            <textarea id="client-comment" class="calc-input" rows="3" placeholder="Напишите ваши пожелания по заказу..." style="resize: vertical; min-height: 80px;"></textarea>
-                          </div>
-                        </div>
-
-            <!-- Кнопка отправки -->
-            <div class="calc-total-wrapper" style="justify-content: center; border-top: 1px solid var(--color-border); padding-top: 20px; margin-top: 16px;">
-              <button type="button" id="send-order-btn" class="btn btn--primary">Отправить заказ</button>
+            <div class="calc-grid">
+              <div class="calc-group">
+                <label class="calc-label">Ваше имя</label>
+                <input type="text" id="client-name" class="calc-input" placeholder="Иван Иванов" required>
+              </div>
+              <div class="calc-group">
+                <label class="calc-label">Номер телефона</label>
+                <input type="tel" id="client-phone" class="calc-input" placeholder="+7 (999) 123-45-67" required>
+                <div id="phone-error" class="error-message" style="display: none; color: #FF6F22; font-size: 0.85rem; margin-top: 4px;"></div>
+              </div>
+              <div class="calc-group full-width">
+                <label class="calc-label">Ваша почта</label>
+                <input type="email" id="client-email" class="calc-input" placeholder="example@mail.ru" required>
+                <div id="email-error" class="error-message" style="display: none; color: #FF6F22; font-size: 0.85rem; margin-top: 4px;"></div>
+              </div>
+              <div class="calc-group full-width">
+                <label class="calc-label">Ссылка на Яндекс.Диск или архив с фотографиями</label>
+                <input type="url" id="client-link" class="calc-input" placeholder="https://disk.yandex.ru/...">
+              </div>
+              <div class="calc-group full-width">
+                <label class="calc-label">Комментарий</label>
+                <textarea id="client-comment" class="calc-input" rows="3" placeholder="Напишите ваши пожелания по заказу..." style="resize: vertical; min-height: 80px;"></textarea>
+              </div>
             </div>
 
+            <div class="calc-total-wrapper">
+              <button type="button" id="send-order-btn" class="btn btn--primary">Отправить заказ</button>
+            </div>
           </form>
         </div>
       </div>
@@ -231,18 +255,11 @@
 
   <footer class="footer">
     <div class="container footer__inner">
-      <div class="footer-col">
-        <div class="footer-col__title"><span>Центр</span></div>
-        <p>ул. Большая Московская, 12</p>
-        <p><a href="tel:84922421226">8 (4922) 42-12-26</a></p>
-        <p><a href="tel:89040318924">8 (904) 031-89-24</a></p>
+      <div class="footer__info"><p class="footer__copy">&copy; 2026 Техсоюз-Плюс.</p></div>
+      <div class="footer__contacts">
+        <p>г. Владимир, ул. Большая Московская, 12</p>
+        <p>Тел: 8 (4922) 42-12-26</p>
       </div>
-      <div class="footer-col">
-        <div class="footer-col__title"><span>Суздальский</span></div>
-        <p>Суздальский проспект, 15</p>
-        <p><a href="tel:89106726819">8 (910) 672-68-19</a></p>
-      </div>
-      <div class="footer__copy">&copy; 2026 Техсоюз-Плюс. Все права защищены.</div>
     </div>
   </footer>
 
