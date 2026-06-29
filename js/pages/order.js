@@ -229,6 +229,5 @@ document.addEventListener('DOMContentLoaded', () => {
       `Свяжитесь со мной для уточнения деталей и расчета стоимости.`
     );
 
-    window.location.href = `mailto:info@forocenter33.ru?subject=${subject}&body=${body}`;
-  });
+    window.location.href = `mailto:terentieva1350@mail.ru?subject=${subject}&body=${body}`;  });
 });
