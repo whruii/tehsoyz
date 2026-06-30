@@ -128,15 +128,16 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // --- 5. ОТПРАВКА ЧЕРЕЗ ПОЧТОВУЮ ПРОГРАММУ (mailto) ---
-document.getElementById('send-order-btn').addEventListener('click', function() {
-  // Собираем данные из формы
+// Функция отправки заказа через почту (работает без сервера)
+function sendOrderByMail() {
+  // Собираем контактные данные
   const name = document.getElementById('client-name').value.trim();
   const phone = document.getElementById('client-phone').value.trim();
   const email = document.getElementById('client-email').value.trim();
   const link = document.getElementById('client-link').value.trim();
   const comment = document.getElementById('client-comment').value.trim();
 
-  // Проверка на заполнение
+  // Проверяем, заполнено ли имя и телефон
   if (!name || !phone || !email) {
     alert('Пожалуйста, заполните имя, телефон и почту!');
     return;
@@ -186,7 +187,7 @@ document.getElementById('send-order-btn').addEventListener('click', function() {
     }
   }
 
-  // Формируем текст письма
+  // Формируем текст письма для почты
   const body = encodeURIComponent(
     `Здравствуйте! Я хочу оформить заказ.\n\n` +
     `Имя: ${name}\n` +
@@ -202,7 +203,7 @@ document.getElementById('send-order-btn').addEventListener('click', function() {
 
   const subject = encodeURIComponent(`Заказ с сайта (${serviceName})`);
 
-  // Открываем почтовый клиент с заполненным письмом
+  // Открываем почтовую программу (или веб-почту) с готовым письмом
   window.location.href = `mailto:terentieva1350@mail.ru?subject=${subject}&body=${body}`;
-});
+}
 });
