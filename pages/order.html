@@ -117,11 +117,20 @@
             <button class="tab-btn" data-tab="order-wide">Широкоформатная</button>
           </div>
 
-          <form id="orderForm" class="order-calculator">
+          <!-- ФОРМА ЗАКАЗА (РАБОТАЕТ ЧЕРЕЗ FORMSPREE) -->
+          <form class="order-calculator" action="https://formspree.io/f/mrewlvjy" method="POST">
+            
+            <!-- Скрытое поле для перенаправления после отправки -->
+            <input type="hidden" name="_next" value="https://whruii.github.io/tehsoyz/pages/order.html?success=true" />
+
+            <!-- Скрытые поля для данных из вкладок -->
+            <input type="hidden" name="service_type" id="service_type" value="Фотолаборатория">
+            <input type="hidden" name="service_params" id="service_params" value="">
+
             <div class="tab-panel active" id="order-lab">
               <div class="calc-group">
                 <label class="calc-label">Формат</label>
-                <select class="calc-input" id="lab-format">
+                <select class="calc-input" name="lab_format">
                   <option>9х13 см</option>
                   <option>10x15 см</option>
                   <option>13х18 см</option>
@@ -134,21 +143,21 @@
               </div>
               <div class="calc-group">
                 <label class="calc-label">Тип бумаги</label>
-                <select class="calc-input" id="lab-paper">
+                <select class="calc-input" name="lab_paper">
                   <option>Глянец</option>
                   <option>Матовая</option>
                 </select>
               </div>
               <div class="calc-group">
                 <label class="calc-label">Количество фото</label>
-                <input type="number" class="calc-input" id="lab-qty" value="1" min="1" max="1000">
+                <input type="number" class="calc-input" name="lab_qty" value="1" min="1" max="1000">
               </div>
             </div>
 
             <div class="tab-panel" id="order-printer">
               <div class="calc-group">
                 <label class="calc-label">Категория бумаги</label>
-                <select id="printer-cat" class="calc-input">
+                <select id="printer-cat" class="calc-input" name="printer_cat">
                   <option value="office">Офисная бумага</option>
                   <option value="photo">Фотобумага</option>
                 </select>
@@ -156,20 +165,21 @@
               <div id="printer-office-group" class="sub-group">
                 <div class="calc-group">
                   <label class="calc-label">Формат</label>
-                  <select id="office-format" class="calc-input">
+                  <select id="office-format" class="calc-input" name="office_format">
                     <option value="21x30">21х30</option>
                     <option value="30x42">30х42</option>
                   </select>
                 </div>
                 <div class="calc-group">
                   <label class="calc-label">Вид печати</label>
-                  <select id="office-type" class="calc-input"></select>
+                  <select id="office-type" class="calc-input" name="office_type">
+                  </select>
                 </div>
               </div>
               <div id="printer-photo-group" class="sub-group" style="display: none;">
                 <div class="calc-group">
                   <label class="calc-label">Формат</label>
-                  <select id="photo-format" class="calc-input">
+                  <select id="photo-format" class="calc-input" name="photo_format">
                     <option value="9x13">9х13 см</option>
                     <option value="10x15">10x15 см</option>
                     <option value="13x18">13х18 см</option>
@@ -180,19 +190,20 @@
                 </div>
                 <div class="calc-group">
                   <label class="calc-label">Тип бумаги</label>
-                  <select id="photo-type" class="calc-input"></select>
+                  <select id="photo-type" class="calc-input" name="photo_type">
+                  </select>
                 </div>
               </div>
               <div class="calc-group">
                 <label class="calc-label">Количество фото</label>
-                <input type="number" class="calc-input" id="printer-qty" value="1" min="1" max="1000">
+                <input type="number" class="calc-input" name="printer_qty" value="1" min="1" max="1000">
               </div>
             </div>
 
             <div class="tab-panel" id="order-wide">
               <div class="calc-group">
                 <label class="calc-label">Тип бумаги</label>
-                <select id="wide-type" class="calc-input">
+                <select id="wide-type" class="calc-input" name="wide_type">
                   <option value="gloss">Глянец 6 цветов</option>
                   <option value="canvas-no">Холст тканый без подрамника</option>
                   <option value="canvas-stretch">Холст тканый под натяжку (+10см)</option>
@@ -203,11 +214,12 @@
               </div>
               <div class="calc-group">
                 <label class="calc-label">Размер (Формат)</label>
-                <select id="wide-size" class="calc-input"></select>
+                <select id="wide-size" class="calc-input" name="wide_size">
+                </select>
               </div>
               <div class="calc-group" id="wide-film-group" style="display: none;">
                 <label class="calc-label">Тип плёнки</label>
-                <select id="wide-film-type" class="calc-input">
+                <select id="wide-film-type" class="calc-input" name="wide_film">
                   <option>Глянцевая</option>
                   <option>Матовая</option>
                   <option>Прозрачная</option>
@@ -215,51 +227,50 @@
               </div>
               <div class="calc-group">
                 <label class="calc-label">Количество (м²)</label>
-                <input type="number" id="wide-qty" class="calc-input" value="1" min="1" max="100" step="0.1">
+                <input type="number" id="wide-qty" class="calc-input" name="wide_qty" value="1" min="1" max="100" step="0.1">
               </div>
             </div>
 
             <div class="calc-grid">
               <div class="calc-group">
                 <label class="calc-label">Ваше имя</label>
-                <input type="text" id="client-name" class="calc-input" placeholder="Иван Иванов" required>
+                <input type="text" id="client-name" class="calc-input" name="name" placeholder="Иван Иванов" required>
               </div>
               <div class="calc-group">
                 <label class="calc-label">Номер телефона</label>
-                <input type="tel" id="client-phone" class="calc-input" placeholder="+7 (999) 123-45-67" required>
+                <input type="tel" id="client-phone" class="calc-input" name="phone" placeholder="+7 (999) 123-45-67" required>
                 <div id="phone-error" class="error-message" style="display: none; color: #FF6F22; font-size: 0.85rem; margin-top: 4px;"></div>
               </div>
               <div class="calc-group full-width">
                 <label class="calc-label">Ваша почта</label>
-                <input type="email" id="client-email" class="calc-input" placeholder="example@mail.ru" required>
+                <input type="email" id="client-email" class="calc-input" name="email" placeholder="example@mail.ru" required>
                 <div id="email-error" class="error-message" style="display: none; color: #FF6F22; font-size: 0.85rem; margin-top: 4px;"></div>
               </div>
               <div class="calc-group full-width">
                 <label class="calc-label">Ссылка на Яндекс.Диск или архив с фотографиями</label>
-                <input type="url" id="client-link" class="calc-input" placeholder="https://disk.yandex.ru/...">
+                <input type="url" id="client-link" class="calc-input" name="link" placeholder="https://disk.yandex.ru/...">
               </div>
               <div class="calc-group full-width">
                 <label class="calc-label">Комментарий</label>
-                <textarea id="client-comment" class="calc-input" rows="3" placeholder="Напишите ваши пожелания по заказу..." style="resize: vertical; min-height: 80px;"></textarea>
+                <textarea id="client-comment" class="calc-input" name="comment" rows="3" placeholder="Напишите ваши пожелания по заказу..." style="resize: vertical; min-height: 80px;"></textarea>
               </div>
             </div>
 
+            <!-- КНОПКА ОТПРАВКИ -->
             <div class="calc-total-wrapper">
-              <button type="button" id="send-order-btn" class="btn btn--primary">Отправить заказ</button>
+              <button type="submit" class="btn btn--primary">Отправить заказ</button>
             </div>
+
           </form>
         </div>
       </div>
     </section>
   </main>
-
   <footer class="footer">
     <div class="container footer__inner">
-      <div class="footer__info"><p class="footer__copy">&copy; 2026 Техсоюз-Плюс.</p></div>
-      <div class="footer__contacts">
-        <p>г. Владимир, ул. Большая Московская, 12</p>
-        <p>Тел: 8 (4922) 42-12-26</p>
-      </div>
+      <div class="footer-col"><div class="footer-col__title"><span>Центр</span></div><p>ул. Большая Московская, 12</p><p><a href="tel:84922421226">8 (4922) 42-12-26</a></p><p><a href="tel:89040318924">8 (904) 031-89-24</a></p></div>
+      <div class="footer-col"><div class="footer-col__title"><span>Суздальский</span></div><p>Суздальский проспект, 15</p><p><a href="tel:89106726819">8 (910) 672-68-19</a></p></div>
+      <div class="footer__copy">&copy; 2026 Техсоюз-Плюс. Все права защищены.</div>
     </div>
   </footer>
 
