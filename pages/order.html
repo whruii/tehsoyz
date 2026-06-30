@@ -13,66 +13,15 @@
   <link rel="stylesheet" href="../css/style.css">
   
   <style>
-    .order-section {
-      padding: 60px 0 80px;
-      background-image: url('../images/bg-bottom.jpg');
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      width: 100%;
-    }
-    .order-wrapper {
-      background: #ffffff !important;
-      max-width: 850px;
-      margin: 0 auto;
-      padding: 40px;
-      border-radius: 24px;
-      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
-    }
-    .calc-input {
-      background: rgba(253, 183, 59, 0.15) !important;
-      border: 1px solid rgba(253, 183, 59, 0.3) !important;
-      color: #1A1A1A !important;
-      padding: 12px 16px !important;
-      border-radius: 8px !important;
-      width: 100% !important;
-      font-size: 1rem !important;
-      transition: all 0.3s ease !important;
-    }
-    .calc-input:focus {
-      background: #ffffff !important;
-      border-color: #FDB73B !important;
-      box-shadow: 0 0 0 4px rgba(253, 183, 59, 0.25) !important;
-      outline: none !important;
-    }
-    select.calc-input {
-      appearance: none !important;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23FDB73B' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E") !important;
-      background-repeat: no-repeat !important;
-      background-position: right 16px center !important;
-      background-size: 12px !important;
-    }
+    .order-section { padding: 60px 0 80px; background-image: url('../images/bg-bottom.jpg'); background-size: cover; background-position: center; background-repeat: no-repeat; width: 100%; }
+    .order-wrapper { background: #ffffff !important; max-width: 850px; margin: 0 auto; padding: 40px; border-radius: 24px; box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08); }
+    .calc-input { background: rgba(253, 183, 59, 0.15) !important; border: 1px solid rgba(253, 183, 59, 0.3) !important; color: #1A1A1A !important; padding: 12px 16px !important; border-radius: 8px !important; width: 100% !important; font-size: 1rem !important; transition: all 0.3s ease !important; }
+    .calc-input:focus { background: #ffffff !important; border-color: #FDB73B !important; box-shadow: 0 0 0 4px rgba(253, 183, 59, 0.25) !important; outline: none !important; }
+    select.calc-input { appearance: none !important; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23FDB73B' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E") !important; background-repeat: no-repeat !important; background-position: right 16px center !important; background-size: 12px !important; }
     input.calc-input { appearance: auto !important; background-image: none !important; }
-    input[type="number"].calc-input {
-      appearance: textfield !important;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23FDB73B' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E") !important;
-      background-repeat: no-repeat !important;
-      background-position: right 16px center !important;
-      background-size: 12px !important;
-      padding-right: 40px !important;
-    }
-    input[type="number"].calc-input::-webkit-inner-spin-button,
-    input[type="number"].calc-input::-webkit-outer-spin-button {
-      -webkit-appearance: none !important;
-      margin: 0 !important;
-    }
-    .calc-label {
-      font-size: 0.95rem !important;
-      font-weight: 600 !important;
-      color: #1A1A1A !important;
-      display: block !important;
-      margin-bottom: 6px !important;
-    }
+    input[type="number"].calc-input { appearance: textfield !important; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23FDB73B' stroke-width='2' fill='none' stroke-linecap='round'/%3E%3C/svg%3E") !important; background-repeat: no-repeat !important; background-position: right 16px center !important; background-size: 12px !important; padding-right: 40px !important; }
+    input[type="number"].calc-input::-webkit-inner-spin-button, input[type="number"].calc-input::-webkit-outer-spin-button { -webkit-appearance: none !important; margin: 0 !important; }
+    .calc-label { font-size: 0.95rem !important; font-weight: 600 !important; color: #1A1A1A !important; display: block !important; margin-bottom: 6px !important; }
     .calc-group { margin-bottom: 20px !important; }
     .calc-grid { display: grid !important; grid-template-columns: 1fr 1fr !important; gap: 20px !important; }
     .calc-grid .full-width { grid-column: 1 / -1 !important; }
@@ -123,9 +72,7 @@
             <!-- Скрытое поле для перенаправления после отправки -->
             <input type="hidden" name="_next" value="https://whruii.github.io/tehsoyz/pages/order.html?success=true" />
 
-            <!-- Скрытые поля для данных из вкладок -->
             <input type="hidden" name="service_type" id="service_type" value="Фотолаборатория">
-            <input type="hidden" name="service_params" id="service_params" value="">
 
             <div class="tab-panel active" id="order-lab">
               <div class="calc-group">
@@ -227,7 +174,7 @@
               </div>
               <div class="calc-group">
                 <label class="calc-label">Количество (м²)</label>
-                <input type="number" id="wide-qty" class="calc-input" name="wide_qty" value="1" min="1" max="100" step="0.1">
+                <input type="number" id="wide_qty" class="calc-input" name="wide_qty" value="1" min="1" max="100" step="0.1">
               </div>
             </div>
 
